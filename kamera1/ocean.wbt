@@ -1,0 +1,203 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "../protos/BlueBoat.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.06258779396696913 0.5687895631133505 0.8200982873654061 0.8022819366211671
+  position -20.547373365048085 -24.267957279377413 19.558751644106987
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF WATER Fluid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.0626841 0.552224 0.723339
+        transparency 0.7
+        roughness 1
+        metalness 0
+      }
+      geometry DEF WATER_BOX Box {
+        size 1000 1000 0.7
+      }
+    }
+  ]
+  viscosity 0.01
+  boundingObject Pose {
+    children [
+      USE WATER_BOX
+    ]
+  }
+  locked TRUE
+}
+BlueBoat {
+  translation 0 0 0.42
+  controller "<extern>"
+  bodySlot [
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Pose {
+      children [
+        DEF left_transform Pose {
+          children [
+            DistanceSensor {
+              translation 0.58 0.29 0
+              name "left_ir"
+              lookupTable [
+                0 0 0
+                5 1000 0
+              ]
+              type "infra-red"
+            }
+          ]
+        }
+        DEF right_transform Pose {
+          children [
+            DistanceSensor {
+              translation 0.63 -0.38 0
+              name "right_ir"
+              lookupTable [
+                0 0 0
+                5 1000 0
+              ]
+              type "infra-red"
+            }
+          ]
+        }
+      ]
+    }
+    Accelerometer {
+    }
+    GPS {
+    }
+    Gyro {
+    }
+  ]
+}
+OilBarrel {
+  translation -8.635 4.97371 0.5595498919704249
+  rotation -0.17000006110990545 -0.9047921649529348 0.39044989110308337 1.752814691517513
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  translation -10.052079249302796 2.4814946123187727 0.5595498919704248
+  rotation -0.2751145870612612 -0.6601107052655578 0.6989748355841716 -2.843723472604472
+  name "oil barrel(1)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  translation 13.9671 0.101998 0.580507
+  rotation 0.9914248557443196 0.045597095586811014 0.12246493492588871 1.5859460279251565
+  name "oil barrel(2)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  translation -11.2712 10.7824 0.5595498919704248
+  rotation -0.8274433153004404 -0.003816805474530774 0.5615362784011249 2.0487089969290153
+  name "oil barrel(3)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+DEF WAYPOINT_1 Pose {
+  translation 50 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_2 Pose {
+  translation 50 50 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_3 Pose {
+  translation 0 50 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_4 Pose {
+  translation 0 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
