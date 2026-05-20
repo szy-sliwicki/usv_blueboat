@@ -1,0 +1,453 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "../protos/BlueBoat.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.03084632103277928 -0.9962077855637901 0.08135448642104752 5.295582481463053
+  position -32.42159801225853 16.197842842804203 80.84099275619701
+}
+Background {
+  backUrl [
+    "../../../../../../Downloads/tyl.png"
+  ]
+  bottomUrl [
+    "../../../../../../Downloads/woda.png"
+  ]
+  frontUrl [
+    "../../../../../../Downloads/frontt.png"
+  ]
+  leftUrl [
+    "../../../../../../Downloads/lewo.png"
+  ]
+  rightUrl [
+    "../../../../../../Downloads/prawo.png"
+  ]
+  topUrl [
+    "../../../../../../Downloads/niebo.png"
+  ]
+  backIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_back.hdr"
+  ]
+  bottomIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_bottom.hdr"
+  ]
+  frontIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_front.hdr"
+  ]
+  leftIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_left.hdr"
+  ]
+  rightIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_right.hdr"
+  ]
+  topIrradianceUrl [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/default/worlds/textures/cubic/mountains_top.hdr"
+  ]
+}
+TexturedBackgroundLight {
+}
+DEF WATER Fluid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.0626841 0.552224 0.723339
+        transparency 0.7
+        roughness 1
+        metalness 0
+      }
+      geometry DEF WATER_BOX Box {
+        size 1000 1000 0.7
+      }
+    }
+  ]
+  viscosity 0.01
+  boundingObject Pose {
+    children [
+      USE WATER_BOX
+    ]
+  }
+  locked TRUE
+}
+BlueBoat {
+  hidden linearVelocity_0 0.3487707085583872 -0.7201325692007421 0.0002383299012955878
+  hidden angularVelocity_0 -0.002853701254881916 0.0032465100903525993 -0.011403211028108696
+  controller "<extern>"
+  bodySlot [
+    Camera {
+      translation 0.07 -0.36 0.14
+      width 320
+      height 240
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Pose {
+      children [
+        DEF left_transform Pose {
+          children [
+            DistanceSensor {
+              translation 0.58 0.31 0
+              name "left_ir"
+              lookupTable [
+                0 0 0
+                5 1000 0
+              ]
+              type "laser"
+            }
+          ]
+        }
+        DEF right_transform Pose {
+          children [
+            DistanceSensor {
+              translation 0.58 -0.31 0
+              name "right_ir"
+              lookupTable [
+                0 0 0
+                5 1000 0
+              ]
+              type "laser"
+            }
+          ]
+        }
+      ]
+    }
+    Accelerometer {
+    }
+    GPS {
+    }
+    Gyro {
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 1.6743765111130881e-15
+  hidden angularVelocity_0 -4.0246936726671004e-163 1.5585397320570362e-162 1.0428138628299954e-178
+  translation 27.2857 16.0745 0.5595498919704247
+  rotation 0.07485721222617372 -0.9820786649121122 0.1729678978948664 1.6022636676563589
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 2.25686250530024e-15
+  translation 8.82309 2.9059 0.559549891970425
+  rotation -0.2751145870612612 -0.6601107052655578 0.6989748355841716 -2.843723472604472
+  name "oil barrel(1)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -3.80234710945872e-16
+  translation 5.93308 -0.275366 0.5595498919704247
+  rotation 0.9512007435919774 0.25233861211856023 0.17760171796508112 1.603582379919742
+  name "oil barrel(2)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.147596002107159e-15
+  translation -1.40565 4.77794 0.559549891970425
+  rotation -0.28210492320117675 0.6722728169838347 0.6844458136699193 -2.647825307179586
+  name "oil barrel(3)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 1.08694442085074e-322 1.08694442085074e-322 -6.267854519432671e-16
+  hidden angularVelocity_0 1.239772221572443e-162 -1.5634515445396337e-162 1.521054759146399e-162
+  translation 17.270879565415896 0.09047355390329205 0.5595498919704248
+  rotation -0.4881173699819061 0.5769113458395346 0.6549158206697742 2.4213247782727025
+  name "oil barrel(4)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.7893962608119137e-07
+  hidden angularVelocity_0 0.001612242288800828 0.0002929992367319535 -1.0428045562736732e-18
+  translation 24.5912 7.56585 0.5595498891718609
+  rotation 0.9905305818807727 0.12697786875605493 0.052209072057528796 1.5729811211229323
+  name "oil barrel(5)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 -1.08694442085074e-322 1.08694442085074e-322 6.820345134302838e-16
+  hidden angularVelocity_0 -1.379664224107273e-162 1.5588959903943342e-162 -1.3624739290705945e-164
+  translation 23.806380688462056 19.329063654815283 0.5595498919704249
+  rotation 0.41759705190535507 0.581399483290548 0.6982745470582755 2.831504114680457
+  name "oil barrel(6)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 1.08694442085074e-322 -1.08694442085074e-322 -5.127972938695847e-08
+  hidden angularVelocity_0 0.00101788812254463 -0.0007176105434186309 2.8727265653244405e-19
+  translation 1.361869818159596 21.476035491341268 0.55954989394297
+  rotation 0.8343655722921199 0.07930771791433369 -0.5454762851425017 2.0084903045009708
+  name "oil barrel(7)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 4.249517268239298e-16
+  hidden angularVelocity_0 1.5546377711202204e-162 -1.0751664475469675e-162 4.368173621218071e-177
+  translation 16.8044 25.3557 0.5595498919704249
+  rotation 0.22824427647251716 0.683937337124792 0.6929172166602487 2.7439715728005156
+  name "oil barrel(8)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -2.075148184855666e-08
+  hidden angularVelocity_0 -0.00027225187783736947 -0.0007549813715052594 6.823786702807369e-19
+  translation -0.491186 14.0183 0.5595498873407313
+  rotation 0.702149680283947 0.5225821046518526 0.48362565107197464 1.8799664954744115
+  name "oil barrel(9)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.6493058693068456e-15
+  translation 15.4371 8.27474 0.5595498919704249
+  rotation 0.7024222059778202 0.5227849346960165 0.4830103069336455 1.881179061301325
+  name "oil barrel(10)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.147596002107159e-15
+  translation 12.9169 28.3633 0.559549891970425
+  rotation 0.7024222059778202 0.5227849346960165 0.4830103069336455 1.881179061301325
+  name "oil barrel(11)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.952551966424327e-15
+  translation 8.71267 16.6981 0.5595498919704249
+  rotation 0.7024222059778202 0.5227849346960165 0.4830103069336455 1.881179061301325
+  name "oil barrel(12)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 1.7350844359219808e-16
+  translation 6.81475 27.2985 0.5595498919704249
+  rotation 0.7024222059778202 0.5227849346960165 0.4830103069336455 1.881179061301325
+  name "oil barrel(13)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+OilBarrel {
+  hidden linearVelocity_0 0 0 -1.147596002107159e-15
+  translation 7.54694 9.31364 0.559549891970425
+  rotation 0.7024222059778202 0.5227849346960165 0.4830103069336455 1.881179061301325
+  name "oil barrel(14)"
+  physics Physics {
+    density 100
+    damping Damping {
+      linear 0.5
+      angular 0.5
+    }
+  }
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "fluid"
+    }
+  ]
+}
+DEF WAYPOINT_1 Pose {
+  translation 0 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_2 Pose {
+  translation 25 0 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_3 Pose {
+  translation 25 25 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
+DEF WAYPOINT_4 Pose {
+  translation 0 25 0.5
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Sphere {
+        radius 0.5
+      }
+    }
+  ]
+}
